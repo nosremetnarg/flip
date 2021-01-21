@@ -1,35 +1,47 @@
 const card = document.querySelector(".card__inner");
-const image = document.querySelector('.card__face--back');
-const tarot = document.querySelector('.hermit');
-
+const image = document.querySelector(".card__face--back");
+const tarot = document.querySelector(".hermit");
 // Titles of Tarot Cards
 const photoArray = [
-
-"theHermit",
-"wheelOfFortune",
-"theJourney",
-"STRENGTH",
-"TEMPERANCE",
-"theLovers"
-
-]
-
+  "theHermit",
+  "wheelOfFortune",
+  "theJourney",
+  "STRENGTH",
+  "TEMPERANCE",
+  "theLovers",
+];
+let photoIndex;
 // Picks random photo index
-const randomNumber = Math.floor(Math.random() * photoArray.length);
-console.log(randomNumber);
-
+function randomNumber() {
+  let randomNum = Math.floor(Math.random() * photoArray.length);
+  console.log(randomNum);
+  //   return randomNum;
+  photoIndex = randomNum;
+//   loadPicture(photoArray[photoIndex]);
+}
 // random photo index number
-let photoIndex = randomNumber;
+// let photoIndex = randomNum;
 
 // Initially load photo details into DOM
-loadPicture(photoArray[photoIndex]);
+// loadPicture(photoArray[photoIndex]);
+randomNumber();
 
-card.addEventListener('click', function () {
-    card.classList.toggle('is-flipped')
-})
+let isFlipped = false;
+
+// Event listener for clicks
+card.addEventListener("click", function () {
+  card.classList.toggle("is-flipped");
+  isFlipped = true;
+  if (isFlipped === true) {
+    randomNumber();
+    isFlipped = false;
+  }
+  loadPicture(photoArray[photoIndex]);
+});
 
 function loadPicture(photo) {
-    console.log(`title ${photo}`);
-    tarot.src = `img/${photo}.png`;
-
+  console.log(`title ${photo}`);
+  if (!isFlipped) {
+  tarot.src = `img/${photo}.png`;
+  }
 }
