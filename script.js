@@ -20,28 +20,34 @@ function randomNumber() {
   photoIndex = randomNum;
 
 }
-
-
+function loadPicture(photo) {
+    console.log(`title ${photo}`);
+    if (!isFlipped) {
+      tarot.src = `img/${photo}.png`;
+    } 
+  
+  }
 
 // Event listener for clicks
 card.addEventListener("click", function () {
     randomNumber();
     loadPicture(photoArray[photoIndex]);
-  card.classList.toggle("is-flipped");
+    card.classList.toggle("is-flipped");
   
   if (!isFlipped) {
-    randomNumber();
     isFlipped = true;
+    // randomNumber();
+    // loadPicture(photoArray[photoIndex]);
   } else if (isFlipped){
       isFlipped = false;
   }
   console.log(`is the card flipped ${isFlipped}`);
 });
 
-function loadPicture(photo) {
-  console.log(`title ${photo}`);
-  if (!isFlipped) {
-    tarot.src = `img/${photo}.png`;
-  } 
+// function loadPicture(photo) {
+//   console.log(`title ${photo}`);
+//   if (!isFlipped) {
+//     tarot.src = `img/${photo}.png`;
+//   } 
 
-}
+// }
