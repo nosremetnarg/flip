@@ -10,6 +10,8 @@ const photoArray = [
   "TEMPERANCE",
   "theLovers",
 ];
+let isFlipped = false;
+
 let photoIndex;
 // Picks random photo index
 function randomNumber() {
@@ -17,6 +19,8 @@ function randomNumber() {
   console.log(randomNum);
   //   return randomNum;
   photoIndex = randomNum;
+  loadPicture(photoArray[photoIndex]);
+
   //   loadPicture(photoArray[photoIndex]);
 }
 // random photo index number
@@ -26,12 +30,11 @@ function randomNumber() {
 // loadPicture(photoArray[photoIndex]);
 randomNumber();
 
-let isFlipped = false;
 
 // Event listener for clicks
 card.addEventListener("click", function () {
   card.classList.toggle("is-flipped");
-  loadPicture(photoArray[photoIndex]);
+//   loadPicture(photoArray[photoIndex]);
   
   if (!isFlipped) {
     randomNumber();
@@ -45,6 +48,7 @@ card.addEventListener("click", function () {
 function loadPicture(photo) {
   console.log(`title ${photo}`);
   if (!isFlipped) {
+    // loadPicture(photoArray[photoIndex]);
     tarot.src = `img/${photo}.png`;
   } 
 //   else if (!isFlipped) {
