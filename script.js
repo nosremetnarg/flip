@@ -17,7 +17,7 @@ function randomNumber() {
   console.log(randomNum);
   //   return randomNum;
   photoIndex = randomNum;
-//   loadPicture(photoArray[photoIndex]);
+  //   loadPicture(photoArray[photoIndex]);
 }
 // random photo index number
 // let photoIndex = randomNum;
@@ -31,17 +31,25 @@ let isFlipped = false;
 // Event listener for clicks
 card.addEventListener("click", function () {
   card.classList.toggle("is-flipped");
-  isFlipped = true;
-  if (isFlipped === true) {
-    randomNumber();
-    isFlipped = false;
-  }
   loadPicture(photoArray[photoIndex]);
+  
+  if (!isFlipped) {
+    randomNumber();
+    isFlipped = true;
+  } else if (isFlipped){
+      isFlipped = false;
+  }
+  console.log(isFlipped);
 });
 
 function loadPicture(photo) {
   console.log(`title ${photo}`);
   if (!isFlipped) {
-  tarot.src = `img/${photo}.png`;
-  }
+    tarot.src = `img/${photo}.png`;
+  } 
+//   else if (!isFlipped) {
+//     setTimeout(function () {
+//       tarot.src = `img/${photo}.png`;
+//     }, 2000);
+//   }
 }
