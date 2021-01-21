@@ -42,7 +42,7 @@ card.addEventListener("click", function () {
   } else if (isFlipped){
       isFlipped = false;
   }
-  console.log(isFlipped);
+  console.log(`is the card flipped ${isFlipped}`);
 });
 
 function loadPicture(photo) {
