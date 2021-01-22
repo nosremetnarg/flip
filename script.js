@@ -48,21 +48,20 @@ card.addEventListener("click", function () {
   if (!isFlipped) {
     isFlipped = true;
     cardTitle.innerHTML = photoArray[photoIndex];
+    loadPicture(photoArray[photoIndex]);
   } else if (isFlipped) {
     randomNumber();
-    setTimeout(function () {
-      loadPicture(photoArray[photoIndex]);
-    }, 250);
+    // setTimeout(function () {
+    //   loadPicture(photoArray[photoIndex]);
+    // }, 250);
     cardTitle.innerHTML = "&nbsp";
     isFlipped = false;
   }
   console.log(`is the card flipped ${isFlipped}`);
 });
 
-// window.addEventListener('load', function(e) {
-//     randomNumber();
-//     loadPicture(photo);
-// })
+
+
 
 // Trying to do this with an object
 
