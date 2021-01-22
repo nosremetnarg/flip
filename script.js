@@ -1,6 +1,7 @@
 const card = document.querySelector(".card__inner");
 const image = document.querySelector(".card__face--back");
 const tarot = document.querySelector(".hermit");
+
 // Titles of Tarot Cards
 const photoArray = [
   "theHermit",
@@ -13,8 +14,11 @@ const photoArray = [
   "theStar",
   "judgement",
   "theSun",
-  "theMagician"
+  "theMagician",
 ];
+
+
+
 
 let isFlipped = false;
 let photoIndex;
@@ -24,43 +28,43 @@ function randomNumber() {
   let randomNum = Math.floor(Math.random() * photoArray.length);
   console.log(randomNum);
   photoIndex = randomNum;
-
 }
+// call on page load
+randomNumber();
+loadPicture(photoArray[photoIndex])
+
 function loadPicture(photo) {
-    console.log(`title ${photo}`);
-    if (!isFlipped) {
-      tarot.src = `img/${photo}-min.png`;
-    } 
-  }
+  console.log(`title ${photo}`);
+    tarot.src = `img/${photo}-min.png`;
+  
+}
 
 // Event listener for clicks
 card.addEventListener("click", function () {
-    
-    // loadPicture(photoArray[photoIndex]);
-    card.classList.toggle("is-flipped");
-    
+  card.classList.toggle("is-flipped");
   if (!isFlipped) {
-    loadPicture(photoArray[photoIndex]);
+    
     isFlipped = true;
-
-  } else if (isFlipped) { 
+  } else if (isFlipped) {
     randomNumber();
-      isFlipped = false;
+    setTimeout(function(){ loadPicture(photoArray[photoIndex]); }, 250);
+    isFlipped = false;
   }
   console.log(`is the card flipped ${isFlipped}`);
 });
 
-randomNumber();
 
+// window.addEventListener('load', function(e) {
+//     randomNumber();
+//     loadPicture(photo);
+// })
 
 // Trying to do this with an object
 
 const tarotObjectArray = [
-
-    {
-        'title': 'theHermit',
-        'info': 'The lesson and reward but also misfortune of solitude.',
-        "index" : 1
-    },
-
-]
+  {
+    title: "theHermit",
+    info: "The lesson and reward but also misfortune of solitude.",
+    index: 1,
+  },
+];
