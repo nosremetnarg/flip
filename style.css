@@ -16,7 +16,7 @@ body {
 }
 
 .card {
-  margin: 100px auto 0;
+  margin: 50px auto 0;
   width: 400px;
   height: 600px;
   perspective: 1000px;
@@ -67,6 +67,14 @@ body {
 .hermit {
   width: 400px;
   height: 600px;
+}
+
+.card__text {
+    display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 3rem;
+  text-transform: uppercase;
 }
 
 @media only screen and (max-width: 480px) {
