@@ -42,20 +42,27 @@ function getPhototitle(photo) {
   console.log(title);
 }
 
+function flipTheCard() {
+    card.classList.toggle("is-flipped");
+}
+
 // Event listener for clicks
 card.addEventListener("click", function () {
-  card.classList.toggle("is-flipped");
+//   card.classList.toggle("is-flipped");
   if (!isFlipped) {
+
+    // TAROT card face is showing
     isFlipped = true;
     cardTitle.innerHTML = photoArray[photoIndex];
+    flipTheCard();
     loadPicture(photoArray[photoIndex]);
   } else if (isFlipped) {
+
+    // TAROT card face is not showing
     randomNumber();
-    // setTimeout(function () {
-    //   loadPicture(photoArray[photoIndex]);
-    // }, 250);
     cardTitle.innerHTML = "&nbsp";
     isFlipped = false;
+    flipTheCard();
   }
   console.log(`is the card flipped ${isFlipped}`);
 });
