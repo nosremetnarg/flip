@@ -3,6 +3,7 @@ const image = document.querySelector(".card__face--back");
 const tarot = document.querySelector(".hermit");
 const cardTitle = document.querySelector('.card__text--title');
 const cardAbout = document.querySelector('.card__text--about');
+const btn = document.querySelector('.hanged_man');
 
 
 // Titles of Tarot Cards
@@ -50,6 +51,12 @@ function flipTheCard() {
     card.classList.toggle("is-flipped");
 }
 
+// function createBtn() {
+//     let btn = document.createElement('button');
+//     btn.innerHTML = "the hanged man";
+//     document.body.appendChild(btn);
+// }
+
 // Event listener for clicks
 card.addEventListener("click", function () {
 //   card.classList.toggle("is-flipped");
@@ -57,9 +64,18 @@ card.addEventListener("click", function () {
 
     // TAROT card face is showing
     isFlipped = true;
-    cardTitle.innerHTML = photoArray[photoIndex];
+    let newCardTitle = cardTitle.innerHTML = photoArray[photoIndex];
     flipTheCard();
     loadPicture(photoArray[photoIndex]);
+
+    // create hanged man btn
+    if (newCardTitle === "THE HANGED MAN") {
+        // createBtn();
+        // btn.style.opacity = 1;
+        btn.classList.toggle("w3-animate-opacity");
+    } else if (newCardTitle !== "THE HANGED MAN") {
+        // btn.style.opacity = 0;
+    }
     cardAbout.innerHTML = "hotdog";
 
   } else if (isFlipped) {
