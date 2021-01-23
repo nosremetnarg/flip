@@ -1,21 +1,25 @@
 const card = document.querySelector(".card__inner");
 const image = document.querySelector(".card__face--back");
 const tarot = document.querySelector(".hermit");
-const cardTitle = document.querySelector('.card__text--title')
+const cardTitle = document.querySelector('.card__text--title');
+const cardAbout = document.querySelector('.card__text--about');
+
 
 // Titles of Tarot Cards
 const photoArray = [
-  "the Hermit",
-  "wheel Of Fortune",
-  "the Journey",
-  "strength",
+  "THE HERMIT",
+  "WHEEL OF FORTUNE",
+  "THE HANGED MAN",
+  "STRENGTH",
   "TEMPERANCE",
-  "the Lovers",
-  "the Empress",
-  "the Star",
-  "judgement",
-  "the Sun",
-  "the Magician",
+  "THE LOVERS",
+  "THE EMPRESS",
+  "THE STAR",
+  "JUDGEMENT",
+  "THE SUN",
+  "THE MAGICIAN",
+  "THE FOOL",
+  "THE JOURNEY"
 ];
 
 let isFlipped = false;
@@ -34,7 +38,7 @@ getPhototitle(photoArray[photoIndex])
 
 function loadPicture(photo) {
   console.log(`title ${photo}`);
-  tarot.src = `img/${photo}-min.png`;
+  tarot.src = `img/${photo}.png`;
 }
 
 function getPhototitle(photo) {
@@ -56,6 +60,8 @@ card.addEventListener("click", function () {
     cardTitle.innerHTML = photoArray[photoIndex];
     flipTheCard();
     loadPicture(photoArray[photoIndex]);
+    cardAbout.innerHTML = "hotdog";
+
   } else if (isFlipped) {
 
     // TAROT card face is not showing
@@ -63,6 +69,7 @@ card.addEventListener("click", function () {
     cardTitle.innerHTML = "&nbsp";
     isFlipped = false;
     flipTheCard();
+
   }
   console.log(`is the card flipped ${isFlipped}`);
 });
