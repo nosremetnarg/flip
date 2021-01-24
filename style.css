@@ -83,12 +83,25 @@ body {
 }
 .card__text--about {
   padding-top: 4rem;
+  margin-bottom: 6rem;
 }
-
+.secretBtn {
+    width: 10rem;
+    height: 10rem;
+    position: relative;
+}
 .hanged_man {
-    opacity: 0;
+    /* animates bull */
+    /* opacity: 0;
     animation-name: fadeIn;
-    animation-duration: 3s;
+    animation-duration: 3s; */
+   
+}
+.theBull {
+    /* size of bull picture */
+    position: absolute;
+    width: 150px;
+    margin-left: 50px;
 }
 
 @media only screen and (max-width: 480px) {
