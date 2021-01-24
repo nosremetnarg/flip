@@ -11,6 +11,7 @@
 
 body {
   font-family: GaramondRough-Regular, sans-serif;
+  font-variant: small-caps;
   width: 100%;
   min-height: 100vh;
   /* z-index: 1000; */
@@ -78,8 +79,7 @@ body {
   align-items: center;
   justify-content: center;
   padding-top: 6rem;
-  text-transform: uppercase;
-  
+  font-variant: small-caps;
 }
 .card__text--about {
   padding-top: 4rem;
@@ -107,16 +107,16 @@ body {
 @media only screen and (max-width: 480px) {
   .card {
     margin: 2rem auto 0;
-    width: 200px;
-    height: 300px;
+    width: 288.5px;
+  height: 500px;
     perspective: 1000px;
   }
 }
 @media only screen and (max-width: 480px) {
   .card__inner {
     margin: 25px auto 0;
-    width: 200px;
-    height: 300px;
+    width: 288.5px;
+  height: 500px;
     perspective: 1000px;
   }
 
