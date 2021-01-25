@@ -114,7 +114,7 @@ body {
 }
 @media only screen and (max-width: 480px) {
   .card__inner {
-    margin: 25px auto 0;
+    margin: 0 auto 0;
     width: 288.5px;
   height: 500px;
     perspective: 1000px;
