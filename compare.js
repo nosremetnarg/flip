@@ -1,127 +1,118 @@
-const wordEl = document.getElementById('word');
-const wrongLettersEl = document.getElementById('wrong-letters');
-const playAgainBtn = document.getElementById('play-button');
-const popup = document.getElementById('popup-container');
-const notification = document.getElementById('notification-container');
-const finalMessage = document.getElementById('final-message');
-const finalMessageRevealWord = document.getElementById('final-message-reveal-word');
+const draggable_list = document.getElementById('draggable-list');
+const check = document.getElementById('check');
 
-const figureParts = document.querySelectorAll('.figure-part');
+const richestPeople = [
+  'Jeff Bezos',
+  'Bill Gates',
+  'Warren Buffett',
+  'Bernard Arnault',
+  'Carlos Slim Helu',
+  'Amancio Ortega',
+  'Larry Ellison',
+  'Mark Zuckerberg',
+  'Michael Bloomberg',
+  'Larry Page'
+];
 
-const words = ['application', 'programming', 'interface', 'wizard'];
+// Store listitems
+const listItems = [];
 
-let selectedWord = words[Math.floor(Math.random() * words.length)];
+let dragStartIndex;
 
-let playable = true;
+createList();
 
-const correctLetters = [];
-const wrongLetters = [];
+// Insert list items into DOM
+function createList() {
+  [...richestPeople]
+    .map(a => ({ value: a, sort: Math.random() }))
+    .sort((a, b) => a.sort - b.sort)
+    .map(a => a.value)
+    .forEach((person, index) => {
+      const listItem = document.createElement('li');
 
-// Show hidden word
-function displayWord() {
-	wordEl.innerHTML = `
-    ${selectedWord
-			.split('')
-			.map(
-				letter => `
-          <span class="letter">
-            ${correctLetters.includes(letter) ? letter : ''}
-          </span>
-        `
-			)
-			.join('')}
-  `;
+      listItem.setAttribute('data-index', index);
 
-	const innerWord = wordEl.innerText.replace(/[ \n]/g, '');
+      listItem.innerHTML = `
+        <span class="number">${index + 1}</span>
+        <div class="draggable" draggable="true">
+          <p class="person-name">${person}</p>
+          <i class="fas fa-grip-lines"></i>
+        </div>
+      `;
 
-	if (innerWord === selectedWord) {
-		finalMessage.innerText = 'Congratulations! You won! 😃';
-		popup.style.display = 'flex';
+      listItems.push(listItem);
 
-		playable = false;
-	}
+      draggable_list.appendChild(listItem);
+    });
+
+  addEventListeners();
 }
 
-// Update the wrong letters
-function updateWrongLettersEl() {
-	// Display wrong letters
-	wrongLettersEl.innerHTML = `
-    ${wrongLetters.length > 0 ? '<p>Wrong</p>' : ''}
-    ${wrongLetters.map(letter => `<span>${letter}</span>`)}
-  `;
-
-	// Display parts
-	figureParts.forEach((part, index) => {
-		const errors = wrongLetters.length;
-
-		if (index < errors) {
-			part.style.display = 'block';
-		} else {
-			part.style.display = 'none';
-		}
-	});
-
-	// Check if lost
-	if (wrongLetters.length === figureParts.length) {
-		finalMessage.innerText = 'Unfortunately you lost. 😕';
-		finalMessageRevealWord.innerText = `...the word was: ${selectedWord}`;
-		popup.style.display = 'flex';
-
-		playable = false;
-	}
+function dragStart() {
+  // console.log('Event: ', 'dragstart');
+  dragStartIndex = +this.closest('li').getAttribute('data-index');
 }
 
-// Show notification
-function showNotification() {
-	notification.classList.add('show');
-
-	setTimeout(() => {
-		notification.classList.remove('show');
-	}, 2000);
+function dragEnter() {
+  // console.log('Event: ', 'dragenter');
+  this.classList.add('over');
 }
 
-// Keydown letter press
-window.addEventListener('keydown', e => {
-	if (playable) {
-		if (e.keyCode >= 65 && e.keyCode <= 90) {
-			const letter = e.key.toLowerCase();
+function dragLeave() {
+  // console.log('Event: ', 'dragleave');
+  this.classList.remove('over');
+}
 
-			if (selectedWord.includes(letter)) {
-				if (!correctLetters.includes(letter)) {
-					correctLetters.push(letter);
+function dragOver(e) {
+  // console.log('Event: ', 'dragover');
+  e.preventDefault();
+}
 
-					displayWord();
-				} else {
-					showNotification();
-				}
-			} else {
-				if (!wrongLetters.includes(letter)) {
-					wrongLetters.push(letter);
+function dragDrop() {
+  // console.log('Event: ', 'drop');
+  const dragEndIndex = +this.getAttribute('data-index');
+  swapItems(dragStartIndex, dragEndIndex);
 
-					updateWrongLettersEl();
-				} else {
-					showNotification();
-				}
-			}
-		}
-	}
-});
+  this.classList.remove('over');
+}
 
-// Restart game and play again
-playAgainBtn.addEventListener('click', () => {
-	playable = true;
+// Swap list items that are drag and drop
+function swapItems(fromIndex, toIndex) {
+  const itemOne = listItems[fromIndex].querySelector('.draggable');
+  const itemTwo = listItems[toIndex].querySelector('.draggable');
 
-	//  Empty arrays
-	correctLetters.splice(0);
-	wrongLetters.splice(0);
+  listItems[fromIndex].appendChild(itemTwo);
+  listItems[toIndex].appendChild(itemOne);
+}
 
-	selectedWord = words[Math.floor(Math.random() * words.length)];
+// Check the order of list items
+function checkOrder() {
+  listItems.forEach((listItem, index) => {
+    const personName = listItem.querySelector('.draggable').innerText.trim();
 
-	displayWord();
+    if (personName !== richestPeople[index]) {
+      listItem.classList.add('wrong');
+    } else {
+      listItem.classList.remove('wrong');
+      listItem.classList.add('right');
+    }
+  });
+}
 
-	updateWrongLettersEl();
+function addEventListeners() {
+  const draggables = document.querySelectorAll('.draggable');
+  const dragListItems = document.querySelectorAll('.draggable-list li');
 
-	popup.style.display = 'none';
-});
+  draggables.forEach(draggable => {
+    draggable.addEventListener('dragstart', dragStart);
+  });
 
-displayWord();
+  dragListItems.forEach(item => {
+    item.addEventListener('dragover', dragOver);
+    item.addEventListener('drop', dragDrop);
+    item.addEventListener('dragenter', dragEnter);
+    item.addEventListener('dragleave', dragLeave);
+  });
+}
+
+check.addEventListener('click', checkOrder);
