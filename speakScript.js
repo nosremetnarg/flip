@@ -52,6 +52,7 @@ function checkNumber(msg) {
     if (msg === "I am not afraid of the dark") {
         document.body.innerHTML = `
      <h2>Congrats! You have unlocked the door! <br><br>
+     <button class="play-again" id="play-again">Play Again</button>
         `
     } else {
         msgEl.innerHTML += '<div>Try again</div>';
