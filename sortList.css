@@ -1,0 +1,90 @@
+:root {
+    --border-color: #fff;
+    --background-color: #222;
+    --text-color: #34444f;
+    --text-color2: #222;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    height: 100vh;
+    margin: 0;
+    font-family: GaramondRough-Regular, sans-serif;
+    font-variant: small-caps;
+}
+
+.draggable-list {
+    border: 1px solid var(--background-color);
+    color: var(--text-color);
+    padding: 0;
+    list-style-type: none;
+}
+
+.draggable-list li {
+    background-color: var(--border-color);
+    display: flex;
+    flex: 1;
+}
+
+.draggable-list li:not(:last-of-type) {
+    border-bottom: 1px solid var(--background-color);
+}
+
+.draggable-list .number {
+    background-color: var(--text-color2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    height: 60px;
+    width: 60px;
+}
+
+.draggable-list li.over .draggable {
+    background-color: #eaeaea;
+}
+
+.draggable-list .song-name {
+    margin: 0 20px 0 0;
+}
+
+.draggable-list li.right .song-name {
+    color: #3ae374;
+}
+.draggable-list li.wrong .song-name {
+    color: #ff3838;
+}
+
+.draggable {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px;
+    flex: 1;
+}
+
+.check-btn {
+    background-color: var(--background-color);
+    border: none;
+    color: var(--text-color);
+    font-size: 16px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.check-btn:active {
+    transform: scale(0.96);
+}
+
+.check-btn:focus {
+    outline: none;
+}
