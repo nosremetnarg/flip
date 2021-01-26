@@ -49,10 +49,17 @@ function checkNumber(msg) {
     // }
 
     // Check Message 
-    if (msg === "I am not afraid of the dark" || msg === " I'm not afraid of the dark") {
+    if (msg === "I am not afraid of the dark") {
         document.body.innerHTML = `
-     <h2>Congrats! You have unlocked the door! <br><br>
+     <h2>Congrats! You have unlocked the door! <br><br></h2>
      <button class="play-again" id="play-again">Play Again</button>
+     <a class="play-again continue" rel="video" href="https://www.youtube.com/watch?v=ZKAz7El20A0">Continue on<a/>
+        `
+    } else if (msg == "I'm not afraid of the dark"){
+        document.body.innerHTML = `
+     <h2>Congrats! You have unlocked the door! <br><br></h2>
+     <button class="play-again" id="play-again">Play Again</button>
+     <a class="play-again continue" rel="video" href="https://www.youtube.com/watch?v=ZKAz7El20A0" target="_blank">Continue on<a/>
         `
     } else {
         msgEl.innerHTML += '<div>Try again</div>';
