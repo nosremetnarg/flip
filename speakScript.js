@@ -49,7 +49,7 @@ function checkNumber(msg) {
     // }
 
     // Check Message 
-    if (msg === "I am not afraid of the dark") {
+    if (msg === "I am not afraid of the dark" || msg === " I'm not afraid of the dark") {
         document.body.innerHTML = `
      <h2>Congrats! You have unlocked the door! <br><br>
      <button class="play-again" id="play-again">Play Again</button>
