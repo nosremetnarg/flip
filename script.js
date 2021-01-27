@@ -29,8 +29,9 @@ let photoIndex;
 
 // Picks random photo index
 function randomNumber() {
-  // let randomNum = Math.floor(Math.random() * photoArray.length);
-  let randomNum = 2
+  let randomNum = Math.floor(Math.random() * photoArray.length);
+  // use when Testing The Hanged Man
+  // let randomNum = 2
 
   console.log(randomNum);
   photoIndex = randomNum;

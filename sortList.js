@@ -86,12 +86,8 @@ function dragLeave() {
 function checkOrder() {
     listItems.forEach((listItem, index) => {
         const songName = listItem.querySelector('.draggable').innerText.trim();
-        // console.log(`yea ${songName}`);
-        if ([...songName] == [...songTitles]) {
-            console.log('trie');
-        } else {
-            console.log('not yet');
-        }
+        console.log(`yea ${songTitles}`);
+         
         if (songName !== songTitles[index]) {
             listItem.classList.add('wrong');
         } else {
