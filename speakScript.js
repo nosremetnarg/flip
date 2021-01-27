@@ -57,7 +57,7 @@ function checkNumber(msg) {
     document.body.innerHTML = `
      <h2>Congrats! You have unlocked the door! <br><br></h2>
      <button class="play-again" id="play-again">Play Again</button>
-     <a class="play-again continue" rel="video" href="/sortList.html">Continue on<a/>
+     <a class="play-again continue" rel="video" href="/flip/sortList.html">Continue on<a/>
         `;
   } else {
     msgEl.innerHTML += "<div>Try again</div>";
