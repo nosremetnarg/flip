@@ -4,6 +4,7 @@ const tarot = document.querySelector(".hermit");
 const cardTitle = document.querySelector('.card__text--title');
 const cardAbout = document.querySelector('.card__text--about');
 const btn = document.querySelector('.hanged_man');
+const bull = document.querySelector('.theBull');
 
 
 // Titles of Tarot Cards
@@ -28,9 +29,12 @@ let photoIndex;
 
 // Picks random photo index
 function randomNumber() {
-  let randomNum = Math.floor(Math.random() * photoArray.length);
+  // let randomNum = Math.floor(Math.random() * photoArray.length);
+  let randomNum = 2
+
   console.log(randomNum);
   photoIndex = randomNum;
+  
 }
 // Load picture on initial page load
 randomNumber();
@@ -72,9 +76,10 @@ card.addEventListener("click", function () {
     if (newCardTitle === "THE HANGED MAN") {
         // createBtn();
         // btn.style.opacity = 1;
-        btn.classList.toggle("w3-animate-opacity");
+        bull.classList.add('visible')
+        // btn.classList.toggle("w3-animate-opacity");
     } else if (newCardTitle !== "THE HANGED MAN") {
-        // btn.style.opacity = 0;
+        // bull.classList.add('.visible')
     }
     cardAbout.innerHTML = "hotdog";
 

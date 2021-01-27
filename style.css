@@ -100,8 +100,18 @@ body {
 .theBull {
     /* size of bull picture */
     position: absolute;
+    opacity: 0;
     width: 150px;
     margin-left: 50px;
+}
+.theBull:hover {
+  transition: all 2s ease-in-out;
+  transform: scale(1.2);
+}
+
+.visible {
+  animation-name: fadeIn;
+    animation-duration: 10s;
 }
 
 @media only screen and (max-width: 480px) {
