@@ -88,7 +88,10 @@ body {
 .secretBtn {
     width: 10rem;
     height: 10rem;
-    position: relative;
+    position: absolute;
+    top: 0;
+    left: -30px;
+    transform: translateY(100%);
 }
 .hanged_man {
     /* animates bull */
