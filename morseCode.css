@@ -296,3 +296,20 @@ input:checked + .slider::before {
         font-size: 80px;
     }
   }
+  @media only screen and (max-width: 735px) {
+    nav {
+        font-size: 15px;
+    }
+    .theme-switch-wrapper span.toggle-text {
+        font-size: .8rem;
+    }
+    .fas {
+        font-size: 20px;
+    }
+    .theme-switch-wrapper {
+        top: 25px;
+    }
+    .theme-switch {
+       
+    }
+  }
