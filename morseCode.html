@@ -5,10 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Morse Code</title>
     <link rel="stylesheet" href="morseCode.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.min.css"/>
-
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.min.css"
+    />
   </head>
   <body>
+    <!-- Dark Mode Switch -->
+    <div class="theme-switch-wrapper">
+      <span id="toggle-icon">
+        <span class="toggle-text">Light Mode</span>
+        <i class="fas fa-sun"></i>
+      </span>
+      <label class="theme-switch">
+          <!-- had to delete for attr to get switch to work -->
+        <input type="checkbox">
+        <div class="slider round"></div>
+      </label>
+    </div>
+
     <!--  Navigation -->
     <nav class="nav" id="nav">
       <a href="#home">HOME</a>
@@ -63,7 +78,11 @@
         <button class="outline" disabled>Disabled</button>
       </div>
       <div class="text-box" id="text-box">
-          <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Minus recusandae ullam ipsa autem vitae officia, harum assumenda a quam nam magni debitis quidem maiores omnis alias ea fugiat aliquam fuga?</p>
+        <p>
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Minus
+          recusandae ullam ipsa autem vitae officia, harum assumenda a quam nam
+          magni debitis quidem maiores omnis alias ea fugiat aliquam fuga?
+        </p>
       </div>
     </section>
 
@@ -71,12 +90,13 @@
 
     <section id="contact">
       <div class="social-icons">
-        <i class="fas fa-fire-alt"></i>
-        <i class="fas fa-magic"></i>
-        <i class="fas fa-hat-wizard"></i>
-        <i class="fas fa-pastafarianism"></i>
-        <i class="fas fa-dragon"></i>
+        <i class="fas fart fa-fire-alt"></i>
+        <i class="fas fart fa-magic"></i>
+        <i class="fas fart fa-hat-wizard"></i>
+        <i class="fas fart fa-pastafarianism"></i>
+        <i class="fas fart fa-dragon"></i>
       </div>
     </section>
+    <script src="morseCode.js"></script>
   </body>
 </html>
